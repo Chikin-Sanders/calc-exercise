@@ -12,7 +12,7 @@ const inputNumber = (number) => {
     currentNumber = number;
   } else {
     currentNumber += number;
-  };
+  }
 };
 
 /* pengaturan pencet angka*/
@@ -42,7 +42,7 @@ const inputOperator = (operator) => {
   currentNumber = '';
 }
 operators.forEach((operator) => {
-  operator.addEventListener("click", (event) => {
+  operator.addEventListener('click', (event) => {
     inputOperator(event.target.value);
   });
 });
@@ -50,7 +50,6 @@ operators.forEach((operator) => {
 
 /* pengoperasian */
 const calculate = () => {
-  let result ='';
   let x = parseFloat(prevNumber);
   let y = parseFloat(currentNumber);
 
@@ -78,7 +77,7 @@ const calculate = () => {
 /* fungsi sama dengan */
 const equalSign = document.querySelector(".equal-sign");
 
-equalSign.addEventListener ("click", (event) => {
+equalSign.addEventListener ('click', (event) => {
   calculate();
   updateScreen(currentNumber);
 });
@@ -95,6 +94,7 @@ const clearAll = () => {
   prevNumber ='';
   calculationOperator ='';
   currentNumber = '0';
+  result = '0';
 }
 
 /* ============================= FUNGSI DECIMAL ============================= */
@@ -111,3 +111,15 @@ decimal.addEventListener('click', (event) => {
   inputDecimal(event.target.value);
   updateScreen(currentNumber);
 });
+
+/* ======================= FUNGSI PERSEN ====================================== */
+const percent = document.querySelector(".percentage");
+
+percent.addEventListener('click', () => {
+  percentOpt(currentNumber);
+});
+
+const percentOpt = (percentNumber) => {
+  let y = parseFloat(percentNumber)
+  currentNumber = y / 100;
+};
